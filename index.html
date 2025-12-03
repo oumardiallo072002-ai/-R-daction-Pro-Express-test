@@ -7,12 +7,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://js.paystack.co/v1/inline.js"></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         :root {
             --primary: #667eea;
             --primary-dark: #764ba2;
@@ -22,19 +18,15 @@
             --text-light: #6b7280;
             --white: #ffffff;
             --gray-light: #f3f4f6;
-            --gray-border: #e5e7eb;
-            --success: #10b981;
         }
 
         body {
-            font-family: 'Inter', 'Segoe UI', sans-serif;
+            font-family: 'Inter', sans-serif;
             color: var(--text-dark);
             line-height: 1.6;
-            background: var(--white);
             padding-top: 100px;
         }
 
-        /* Test Banner */
         .test-banner {
             position: fixed;
             top: 0;
@@ -47,28 +39,21 @@
             font-weight: 600;
             font-size: 14px;
             z-index: 1001;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            flex-wrap: wrap;
         }
 
         .test-banner code {
             background: rgba(255,255,255,0.2);
             padding: 2px 8px;
             border-radius: 4px;
-            font-family: monospace;
+            margin-left: 10px;
         }
 
-        /* Header */
         .header {
             position: fixed;
             top: 40px;
             left: 0;
             right: 0;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
+            background: rgba(255,255,255,0.95);
             padding: 15px 0;
             z-index: 1000;
             box-shadow: 0 2px 20px rgba(0,0,0,0.1);
@@ -89,7 +74,6 @@
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
 
         .nav {
@@ -102,47 +86,28 @@
             text-decoration: none;
             color: var(--text-dark);
             font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav a:hover {
-            color: var(--primary);
         }
 
         .btn {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
             padding: 12px 24px;
             border-radius: 12px;
             font-weight: 600;
             text-decoration: none;
-            transition: all 0.3s ease;
             border: none;
             cursor: pointer;
             font-size: 1rem;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 25px rgba(102, 126, 234, 0.5);
+            transition: all 0.3s;
         }
 
         .btn-test {
             background: linear-gradient(135deg, var(--orange-test), var(--orange-dark));
             color: white;
-            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
         }
 
         .btn-test:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 25px rgba(245, 158, 11, 0.5);
         }
 
         .btn-large {
@@ -150,112 +115,6 @@
             font-size: 1.1rem;
         }
 
-        /* Mobile Menu */
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-            padding: 10px;
-        }
-
-        .menu-toggle span {
-            width: 25px;
-            height: 3px;
-            background: var(--text-dark);
-            border-radius: 3px;
-            transition: 0.3s;
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 80px 20px;
-            background: linear-gradient(135deg, #f5f7ff 0%, #fff5f5 100%);
-            min-height: 80vh;
-            display: flex;
-            align-items: center;
-        }
-
-        .hero-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: linear-gradient(135deg, var(--orange-test), var(--orange-dark));
-            color: white;
-            padding: 8px 16px;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.8; }
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, var(--text-dark), var(--primary-dark));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-subtitle {
-            font-size: 1.3rem;
-            color: var(--text-light);
-            margin-bottom: 30px;
-        }
-
-        .hero-price {
-            display: inline-flex;
-            align-items: center;
-            gap: 15px;
-            background: white;
-            padding: 15px 25px;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
-        }
-
-        .hero-price .amount {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--primary);
-        }
-
-        .hero-price .label {
-            font-size: 0.9rem;
-            color: var(--text-light);
-        }
-
-        .hero-illustration {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .hero-illustration svg {
-            width: 100%;
-            max-width: 500px;
-            height: auto;
-        }
-
-        /* Sections Common */
         section {
             padding: 80px 20px;
         }
@@ -274,271 +133,63 @@
             font-size: 2.5rem;
             font-weight: 800;
             margin-bottom: 15px;
-            color: var(--text-dark);
         }
 
-        .section-header p {
-            font-size: 1.1rem;
-            color: var(--text-light);
-            max-width: 600px;
+        .hero {
+            background: linear-gradient(135deg, #f5f7ff 0%, #fff5f5 100%);
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-container {
+            max-width: 1200px;
             margin: 0 auto;
-        }
-
-        /* Avantages */
-        .avantages {
-            background: var(--gray-light);
-        }
-
-        .avantages-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-
-        .avantage-card {
-            background: white;
-            padding: 30px;
-            border-radius: 16px;
+            padding: 0 20px;
             text-align: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
         }
 
-        .avantage-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-        }
-
-        .avantage-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
-        }
-
-        .avantage-card h3 {
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-            color: var(--text-dark);
-        }
-
-        .avantage-card p {
-            color: var(--text-light);
-            font-size: 0.95rem;
-        }
-
-        .counter-box {
-            text-align: center;
-            margin-top: 50px;
-            padding: 30px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            border-radius: 16px;
+        .hero-badge {
+            display: inline-flex;
+            background: linear-gradient(135deg, var(--orange-test), var(--orange-dark));
             color: white;
-        }
-
-        .counter-number {
-            font-size: 3rem;
-            font-weight: 800;
-        }
-
-        .counter-label {
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
-
-        /* Exemples Sujets */
-        .exemples-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
-
-        .exemple-card {
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
-            border: 1px solid var(--gray-border);
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-
-        .exemple-card:hover {
-            border-color: var(--primary);
-            box-shadow: 0 5px 25px rgba(102, 126, 234, 0.15);
-        }
-
-        .exemple-card .icon {
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
-
-        .exemple-card p {
-            font-size: 0.95rem;
-            color: var(--text-dark);
-            font-weight: 500;
-        }
-
-        /* Comment ça marche */
-        .steps {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-
-        .steps .section-header h2,
-        .steps .section-header p {
-            color: white;
-        }
-
-        .steps-container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-            position: relative;
-        }
-
-        .step {
-            text-align: center;
-            position: relative;
-        }
-
-        .step-number {
-            width: 80px;
-            height: 80px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            margin: 0 auto 20px;
-        }
-
-        .step h3 {
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-        }
-
-        .step p {
-            opacity: 0.9;
-        }
-
-        /* Témoignages */
-        .temoignages {
-            background: var(--gray-light);
-        }
-
-        .temoignages-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-
-        .temoignage-card {
-            background: white;
-            padding: 30px;
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-        }
-
-        .temoignage-stars {
-            color: #fbbf24;
-            font-size: 1.2rem;
-            margin-bottom: 15px;
-        }
-
-        .temoignage-text {
-            font-size: 1rem;
-            color: var(--text-dark);
-            margin-bottom: 20px;
-            font-style: italic;
-        }
-
-        .temoignage-author {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .temoignage-avatar {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 700;
-            font-size: 1.2rem;
-        }
-
-        .temoignage-info h4 {
-            font-weight: 700;
-            color: var(--text-dark);
-        }
-
-        .temoignage-info p {
+            padding: 8px 16px;
+            border-radius: 50px;
             font-size: 0.9rem;
-            color: var(--text-light);
-        }
-
-        /* FAQ */
-        .faq-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .faq-item {
-            background: white;
-            border-radius: 12px;
-            margin-bottom: 15px;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
-            overflow: hidden;
-        }
-
-        .faq-question {
-            padding: 20px 25px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
             font-weight: 600;
-            color: var(--text-dark);
-            transition: background 0.3s;
+            margin-bottom: 20px;
         }
 
-        .faq-question:hover {
-            background: var(--gray-light);
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--text-dark), var(--primary-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .faq-question::after {
-            content: '+';
-            font-size: 1.5rem;
-            font-weight: 300;
-            color: var(--primary);
-            transition: transform 0.3s;
-        }
-
-        .faq-item.active .faq-question::after {
-            transform: rotate(45deg);
-        }
-
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-        }
-
-        .faq-item.active .faq-answer {
-            max-height: 200px;
-        }
-
-        .faq-answer p {
-            padding: 0 25px 20px;
+        .hero-subtitle {
+            font-size: 1.3rem;
             color: var(--text-light);
+            margin-bottom: 30px;
         }
 
-        /* Formulaire */
+        .hero-price {
+            display: inline-flex;
+            background: white;
+            padding: 15px 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .hero-price .amount {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
         .order-section {
             background: linear-gradient(135deg, #fff7ed 0%, #fef3c7 100%);
         }
@@ -559,7 +210,6 @@
             text-align: center;
             font-size: 1.8rem;
             margin-bottom: 10px;
-            color: var(--text-dark);
         }
 
         .order-price {
@@ -588,24 +238,16 @@
             display: block;
             font-weight: 600;
             margin-bottom: 8px;
-            color: var(--text-dark);
         }
 
         .form-group input,
         .form-group textarea {
             width: 100%;
             padding: 15px;
-            border: 2px solid var(--gray-border);
+            border: 2px solid #e5e7eb;
             border-radius: 12px;
             font-size: 1rem;
             font-family: inherit;
-            transition: border-color 0.3s;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary);
         }
 
         .form-group textarea {
@@ -624,40 +266,14 @@
         .test-card-info h4 {
             color: var(--orange-dark);
             margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
         }
 
         .test-card-info p {
             margin: 8px 0;
             font-family: monospace;
             font-size: 0.95rem;
-            color: var(--text-dark);
         }
 
-        .test-card-info strong {
-            color: var(--orange-dark);
-        }
-
-        .payment-badges {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 25px;
-            flex-wrap: wrap;
-        }
-
-        .payment-badge {
-            background: var(--gray-light);
-            padding: 8px 15px;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--text-light);
-        }
-
-        /* Success Message */
         .success-message {
             display: none;
             text-align: center;
@@ -671,507 +287,42 @@
 
         .success-message h3 {
             font-size: 2rem;
-            color: var(--success);
+            color: #10b981;
             margin-bottom: 15px;
-        }
-
-        .success-message p {
-            color: var(--text-light);
-            margin-bottom: 25px;
-        }
-
-        /* CTA Final */
-        .cta-final {
-            background: linear-gradient(135deg, var(--orange-test), var(--orange-dark));
-            color: white;
-            text-align: center;
-        }
-
-        .cta-final h2 {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-        }
-
-        .cta-final p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            margin-bottom: 30px;
-        }
-
-        .cta-final .btn {
-            background: white;
-            color: var(--orange-dark);
-        }
-
-        .cta-final .btn:hover {
-            background: var(--gray-light);
-        }
-
-        /* Footer */
-        .footer {
-            background: var(--text-dark);
-            color: white;
-            padding: 60px 20px 30px;
-        }
-
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 40px;
-        }
-
-        .footer-brand .logo {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            display: block;
-        }
-
-        .footer-brand p {
-            color: rgba(255,255,255,0.7);
-            margin-bottom: 20px;
-        }
-
-        .footer h4 {
-            font-size: 1.1rem;
-            margin-bottom: 20px;
-        }
-
-        .footer-links a {
-            display: block;
-            color: rgba(255,255,255,0.7);
-            text-decoration: none;
-            margin-bottom: 10px;
-            transition: color 0.3s;
-        }
-
-        .footer-links a:hover {
-            color: white;
-        }
-
-        .footer-contact p {
-            color: rgba(255,255,255,0.7);
-            margin-bottom: 10px;
-        }
-
-        .footer-contact a {
-            color: var(--primary);
-        }
-
-        .footer-bottom {
-            max-width: 1200px;
-            margin: 40px auto 0;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .footer-bottom p {
-            color: rgba(255,255,255,0.5);
-            font-size: 0.9rem;
-        }
-
-        .footer-payments {
-            display: flex;
-            gap: 10px;
-        }
-
-        .footer-payments span {
-            background: rgba(255,255,255,0.1);
-            padding: 5px 12px;
-            border-radius: 6px;
-            font-size: 0.8rem;
-        }
-
-        /* Animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s, transform 0.6s;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .hero-container {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .hero-illustration {
-                order: -1;
-            }
-
-            .avantages-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .exemples-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .steps-container {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-
-            .temoignages-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-container {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
         }
 
         @media (max-width: 768px) {
-            body {
-                padding-top: 90px;
-            }
-
-            .test-banner {
-                font-size: 12px;
-                padding: 8px 10px;
-            }
-
-            .nav {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: white;
-                flex-direction: column;
-                padding: 20px;
-                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            }
-
-            .nav.active {
-                display: flex;
-            }
-
-            .menu-toggle {
-                display: flex;
-            }
-
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1.1rem;
-            }
-
-            .avantages-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .exemples-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .section-header h2 {
-                font-size: 1.8rem;
-            }
-
-            .order-form {
-                padding: 25px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero-price .amount {
-                font-size: 2rem;
-            }
-
-            .counter-number {
-                font-size: 2.2rem;
-            }
-
-            .footer-bottom {
-                flex-direction: column;
-                text-align: center;
-            }
+            .hero h1 { font-size: 2.2rem; }
+            .order-form { padding: 25px; }
         }
     </style>
 </head>
 <body>
-    <!-- Test Banner -->
     <div class="test-banner">
-        ⚠️ MODE TEST - Aucun paiement réel | Carte test : <code>4084 0840 8408 4081</code>
+        ⚠️ MODE TEST - Aucun paiement réel | Carte : <code>4084 0840 8408 4081</code>
     </div>
 
-    <!-- Header -->
     <header class="header">
         <div class="header-container">
-            <a href="#" class="logo">📝 Rédaction Pro Express</a>
-            <nav class="nav" id="mainNav">
-                <a href="#avantages">Avantages</a>
-                <a href="#fonctionnement">Fonctionnement</a>
-                <a href="#temoignages">Témoignages</a>
-                <a href="#commander" class="btn btn-test">🧪 Tester le paiement</a>
+            <div class="logo">📝 Rédaction Pro Express</div>
+            <nav class="nav">
+                <a href="#commander" class="btn btn-test">🧪 Tester</a>
             </nav>
-            <div class="menu-toggle" onclick="toggleMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-container">
-            <div class="hero-content">
-                <span class="hero-badge">🧪 MODE TEST ACTIVÉ</span>
-                <h1>Rédaction Pro Express</h1>
-                <p class="hero-subtitle">Votre article professionnel livré en 5 minutes par email</p>
-                <div class="hero-price">
-                    <div>
-                        <span class="amount">2 500 FCFA</span>
-                        <p class="label">par article</p>
-                    </div>
-                </div>
-                <a href="#commander" class="btn btn-test btn-large">🧪 Tester le paiement</a>
+            <span class="hero-badge">🧪 MODE TEST ACTIVÉ</span>
+            <h1>Rédaction Pro Express</h1>
+            <p class="hero-subtitle">Votre article professionnel livré en 5 minutes par email</p>
+            <div class="hero-price">
+                <span class="amount">2 500 FCFA</span>
             </div>
-            <div class="hero-illustration">
-                <svg viewBox="0 0 500 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="50" y="50" width="300" height="300" rx="20" fill="#f3f4f6"/>
-                    <rect x="80" y="90" width="240" height="20" rx="4" fill="#667eea"/>
-                    <rect x="80" y="130" width="200" height="12" rx="4" fill="#e5e7eb"/>
-                    <rect x="80" y="155" width="220" height="12" rx="4" fill="#e5e7eb"/>
-                    <rect x="80" y="180" width="180" height="12" rx="4" fill="#e5e7eb"/>
-                    <rect x="80" y="220" width="240" height="12" rx="4" fill="#e5e7eb"/>
-                    <rect x="80" y="245" width="200" height="12" rx="4" fill="#e5e7eb"/>
-                    <rect x="80" y="270" width="160" height="12" rx="4" fill="#e5e7eb"/>
-                    <circle cx="400" cy="100" r="60" fill="#f59e0b" opacity="0.2"/>
-                    <circle cx="400" cy="100" r="40" fill="#f59e0b"/>
-                    <text x="385" y="108" fill="white" font-size="24" font-weight="bold">5m</text>
-                    <path d="M350 300 L450 300 L400 220 Z" fill="#667eea" opacity="0.3"/>
-                    <rect x="370" y="320" width="60" height="40" rx="8" fill="#764ba2"/>
-                    <text x="385" y="347" fill="white" font-size="20">📧</text>
-                </svg>
-            </div>
+            <a href="#commander" class="btn btn-test btn-large">🧪 Tester le paiement</a>
         </div>
     </section>
 
-    <!-- Avantages -->
-    <section class="avantages" id="avantages">
-        <div class="section-container">
-            <div class="section-header fade-in">
-                <h2>Pourquoi choisir Rédaction Pro Express ?</h2>
-                <p>Des articles professionnels livrés en un temps record</p>
-            </div>
-            <div class="avantages-grid">
-                <div class="avantage-card fade-in">
-                    <div class="avantage-icon">⚡</div>
-                    <h3>Livraison immédiate</h3>
-                    <p>Recevez votre article en 5 minutes par email</p>
-                </div>
-                <div class="avantage-card fade-in">
-                    <div class="avantage-icon">✨</div>
-                    <h3>Qualité professionnelle</h3>
-                    <p>Articles rédigés selon les standards professionnels</p>
-                </div>
-                <div class="avantage-card fade-in">
-                    <div class="avantage-icon">📄</div>
-                    <h3>Format HTML prêt</h3>
-                    <p>Contenu formaté et prêt à publier sur votre site</p>
-                </div>
-                <div class="avantage-card fade-in">
-                    <div class="avantage-icon">🔒</div>
-                    <h3>Paiement sécurisé</h3>
-                    <p>Wave, Orange Money, MTN, Carte bancaire</p>
-                </div>
-                <div class="avantage-card fade-in">
-                    <div class="avantage-icon">🎯</div>
-                    <h3>Sujet personnalisé</h3>
-                    <p>Vous choisissez le sujet de votre article</p>
-                </div>
-                <div class="avantage-card fade-in">
-                    <div class="avantage-icon">📊</div>
-                    <h3>Optimisé SEO</h3>
-                    <p>Contenu optimisé pour le référencement</p>
-                </div>
-            </div>
-            <div class="counter-box fade-in">
-                <div class="counter-number" id="counter">0</div>
-                <div class="counter-label">Articles livrés cette semaine</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Exemples de sujets -->
-    <section class="exemples">
-        <div class="section-container">
-            <div class="section-header fade-in">
-                <h2>Exemples de sujets d'articles</h2>
-                <p>Inspirez-vous ou choisissez votre propre sujet</p>
-            </div>
-            <div class="exemples-grid">
-                <div class="exemple-card fade-in">
-                    <div class="icon">📱</div>
-                    <p>Comment lancer son e-commerce en Afrique</p>
-                </div>
-                <div class="exemple-card fade-in">
-                    <div class="icon">💼</div>
-                    <p>Les avantages du marketing digital pour les PME</p>
-                </div>
-                <div class="exemple-card fade-in">
-                    <div class="icon">🚀</div>
-                    <p>Guide complet du dropshipping</p>
-                </div>
-                <div class="exemple-card fade-in">
-                    <div class="icon">💡</div>
-                    <p>Stratégies de croissance pour startups africaines</p>
-                </div>
-                <div class="exemple-card fade-in">
-                    <div class="icon">🌐</div>
-                    <p>Réussir sa présence en ligne en 2025</p>
-                </div>
-                <div class="exemple-card fade-in">
-                    <div class="icon">📈</div>
-                    <p>Augmenter ses ventes avec le contenu marketing</p>
-                </div>
-                <div class="exemple-card fade-in">
-                    <div class="icon">🎓</div>
-                    <p>Formation en ligne : comment créer votre cours</p>
-                </div>
-                <div class="exemple-card fade-in">
-                    <div class="icon">💰</div>
-                    <p>Monétiser votre blog efficacement</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Comment ça marche -->
-    <section class="steps" id="fonctionnement">
-        <div class="section-container">
-            <div class="section-header fade-in">
-                <h2>Comment ça marche ?</h2>
-                <p>3 étapes simples pour recevoir votre article</p>
-            </div>
-            <div class="steps-container">
-                <div class="step fade-in">
-                    <div class="step-number">💳</div>
-                    <h3>Étape 1 : Vous payez</h3>
-                    <p>Paiement sécurisé de 2 500 FCFA via Paystack</p>
-                </div>
-                <div class="step fade-in">
-                    <div class="step-number">📧</div>
-                    <h3>Étape 2 : Vous recevez</h3>
-                    <p>Votre article arrive par email en 5 minutes</p>
-                </div>
-                <div class="step fade-in">
-                    <div class="step-number">🚀</div>
-                    <h3>Étape 3 : Vous publiez</h3>
-                    <p>Contenu prêt à publier sur votre site ou blog</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Témoignages -->
-    <section class="temoignages" id="temoignages">
-        <div class="section-container">
-            <div class="section-header fade-in">
-                <h2>Ce que disent nos clients</h2>
-                <p>Ils ont testé et approuvé Rédaction Pro Express</p>
-            </div>
-            <div class="temoignages-grid">
-                <div class="temoignage-card fade-in">
-                    <div class="temoignage-stars">★★★★★</div>
-                    <p class="temoignage-text">"Service incroyable ! J'ai reçu mon article en moins de 5 minutes. La qualité est excellente et j'ai pu le publier directement. Très recommandé !"</p>
-                    <div class="temoignage-author">
-                        <div class="temoignage-avatar">AD</div>
-                        <div class="temoignage-info">
-                            <h4>Amara Diallo</h4>
-                            <p>Entrepreneur, Dakar</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="temoignage-card fade-in">
-                    <div class="temoignage-stars">★★★★★</div>
-                    <p class="temoignage-text">"Parfait pour ma PME ! Je n'avais pas le temps de rédiger. Maintenant je publie un nouvel article chaque semaine. Mon engagement a augmenté de 40% !"</p>
-                    <div class="temoignage-author">
-                        <div class="temoignage-avatar">KM</div>
-                        <div class="temoignage-info">
-                            <h4>Kofi Mensah</h4>
-                            <p>Propriétaire PME, Accra</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="temoignage-card fade-in">
-                    <div class="temoignage-stars">★★★★★</div>
-                    <p class="temoignage-text">"Le meilleur investissement pour mon blog ! Le contenu est professionnel, bien structuré et optimisé. Mes visiteurs adorent !"</p>
-                    <div class="temoignage-author">
-                        <div class="temoignage-avatar">ZO</div>
-                        <div class="temoignage-info">
-                            <h4>Zainab Okafor</h4>
-                            <p>Blogueuse, Lagos</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ -->
-    <section class="faq">
-        <div class="section-container">
-            <div class="section-header fade-in">
-                <h2>Questions fréquentes</h2>
-                <p>Tout ce que vous devez savoir</p>
-            </div>
-            <div class="faq-container">
-                <div class="faq-item fade-in">
-                    <div class="faq-question" onclick="toggleFaq(this)">
-                        Puis-je choisir le sujet de mon article ?
-                    </div>
-                    <div class="faq-answer">
-                        <p>Absolument ! Vous choisissez complètement le sujet de votre article. Il vous suffit de le décrire dans le formulaire de commande.</p>
-                    </div>
-                </div>
-                <div class="faq-item fade-in">
-                    <div class="faq-question" onclick="toggleFaq(this)">
-                        Combien de temps pour recevoir mon article ?
-                    </div>
-                    <div class="faq-answer">
-                        <p>Vous recevrez votre article en 5 minutes maximum après le paiement, directement dans votre boîte email.</p>
-                    </div>
-                </div>
-                <div class="faq-item fade-in">
-                    <div class="faq-question" onclick="toggleFaq(this)">
-                        Est-ce que le contenu est vraiment unique ?
-                    </div>
-                    <div class="faq-answer">
-                        <p>Oui, chaque article est créé de manière unique selon vos spécifications. Aucun contenu dupliqué.</p>
-                    </div>
-                </div>
-                <div class="faq-item fade-in">
-                    <div class="faq-question" onclick="toggleFaq(this)">
-                        Quels sont les moyens de paiement acceptés ?
-                    </div>
-                    <div class="faq-answer">
-                        <p>Nous acceptons Wave, Orange Money, MTN Money et les cartes bancaires (Visa, Mastercard) via Paystack.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Formulaire de commande -->
     <section class="order-section" id="commander">
         <div class="section-container">
             <div class="order-container">
@@ -1187,13 +338,13 @@
                         </div>
                         <div class="form-group">
                             <label for="sujet">📝 Sujet de l'article</label>
-                            <textarea id="sujet" name="sujet" placeholder="Décrivez le sujet de votre article (minimum 10 caractères)..." required minlength="10"></textarea>
+                            <textarea id="sujet" name="sujet" placeholder="Décrivez le sujet de votre article..." required minlength="10"></textarea>
                         </div>
                         
                         <div class="test-card-info">
                             <h4>🔑 Carte de test Paystack</h4>
                             <p><strong>Numéro :</strong> 4084 0840 8408 4081</p>
-                            <p><strong>Expiration :</strong> N'importe quelle date future (ex: 12/28)</p>
+                            <p><strong>Expiration :</strong> 12/28</p>
                             <p><strong>CVV :</strong> 408</p>
                             <p><strong>PIN :</strong> 0000</p>
                             <p><strong>OTP :</strong> 123456</p>
@@ -1203,136 +354,35 @@
                             🧪 Tester le paiement (2 500 FCFA)
                         </button>
                     </form>
-                    
-                    <div class="payment-badges">
-                        <span class="payment-badge">Wave</span>
-                        <span class="payment-badge">Orange Money</span>
-                        <span class="payment-badge">MTN</span>
-                        <span class="payment-badge">Visa</span>
-                        <span class="payment-badge">Mastercard</span>
-                    </div>
                 </div>
                 
-                <!-- Success Message -->
                 <div class="success-message" id="successMessage">
                     <div class="success-icon">✅</div>
                     <h3>Test réussi !</h3>
-                    <p>Le paiement de test a été effectué avec succès.<br>Vérifiez votre email pour recevoir l'article de test.</p>
+                    <p>Le paiement de test a été effectué avec succès.<br>Vérifiez votre email pour recevoir l'article (2-5 minutes).</p>
                     <button onclick="resetForm()" class="btn btn-test btn-large">Faire un autre test</button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Final -->
-    <section class="cta-final">
-        <div class="section-container" style="text-align: center;">
-            <h2>🧪 Mode Test Activé</h2>
-            <p>Testez le système de paiement sans dépenser un centime</p>
-            <a href="#commander" class="btn btn-large">Tester maintenant</a>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-brand">
-                <span class="logo">📝 Rédaction Pro Express</span>
-                <p>Service de rédaction d'articles automatique. Recevez votre article professionnel en 5 minutes par email.</p>
-            </div>
-            <div class="footer-links">
-                <h4>Navigation</h4>
-                <a href="#avantages">Avantages</a>
-                <a href="#fonctionnement">Fonctionnement</a>
-                <a href="#temoignages">Témoignages</a>
-                <a href="#commander">Commander</a>
-            </div>
-            <div class="footer-contact">
-                <h4>Contact</h4>
-                <p>📧 <a href="mailto:ivojoel223@gmail.com">ivojoel223@gmail.com</a></p>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>© 2025 Rédaction Pro Express - VERSION TEST</p>
-            <div class="footer-payments">
-                <span>Wave</span>
-                <span>Orange Money</span>
-                <span>MTN</span>
-                <span>Visa</span>
-                <span>Mastercard</span>
-            </div>
-        </div>
-    </footer>
-
     <script>
-        // Mobile Menu Toggle
-        function toggleMenu() {
-            document.getElementById('mainNav').classList.toggle('active');
-        }
-
-        // FAQ Accordion
-        function toggleFaq(element) {
-            const item = element.parentElement;
-            item.classList.toggle('active');
-        }
-
-        // Counter Animation
-        function animateCounter() {
-            const counter = document.getElementById('counter');
-            const target = 127;
-            let current = 0;
-            const increment = target / 50;
-            const timer = setInterval(() => {
-                current += increment;
-                if (current >= target) {
-                    counter.textContent = target;
-                    clearInterval(timer);
-                } else {
-                    counter.textContent = Math.floor(current);
-                }
-            }, 30);
-        }
-
-        // Fade-in Animation on Scroll
-        function handleScroll() {
-            const elements = document.querySelectorAll('.fade-in');
-            elements.forEach(el => {
-                const rect = el.getBoundingClientRect();
-                if (rect.top < window.innerHeight - 100) {
-                    el.classList.add('visible');
-                }
-            });
-        }
-
-        // Reset Form
         function resetForm() {
             document.getElementById('orderFormDiv').style.display = 'block';
             document.getElementById('successMessage').style.display = 'none';
             document.getElementById('orderForm').reset();
         }
 
-        // Paystack Payment
         function payWithPaystack() {
             const email = document.getElementById('email').value.trim();
             const sujet = document.getElementById('sujet').value.trim();
             
-            // Validation
-            if (!email || !sujet) {
-                alert('Veuillez remplir tous les champs');
-                return;
-            }
-            
-            if (!email.includes('@')) {
-                alert('Veuillez entrer un email valide');
-                return;
-            }
-            
-            if (sujet.length < 10) {
-                alert('Le sujet doit contenir au moins 10 caractères');
+            if (!email || !sujet || sujet.length < 10) {
+                alert('Veuillez remplir correctement tous les champs');
                 return;
             }
 
-            console.log('🧪 MODE TEST - Initialisation paiement...');
+            console.log('🧪 Initialisation paiement TEST');
             console.log('Email:', email);
             console.log('Sujet:', sujet);
 
@@ -1343,53 +393,50 @@
                 currency: 'XOF',
                 metadata: {
                     sujet: sujet,
-                    custom_fields: [
-                        {
-                            display_name: "Sujet de l'article",
-                            variable_name: "sujet",
-                            value: sujet
-                        }
-                    ]
+                    custom_fields: [{
+                        display_name: "Sujet de l'article",
+                        variable_name: "sujet",
+                        value: sujet
+                    }]
                 },
                 callback: function(response) {
-                    console.log('✅ Paiement TEST réussi!');
+                    console.log('✅ Paiement Paystack réussi!');
                     console.log('Référence:', response.reference);
                     
-                    // APPEL WEBHOOK N8N POUR GÉNÉRER L'ARTICLE
+                    // ✅ APPEL WEBHOOK N8N - STRUCTURE CORRIGÉE
+                    console.log('📡 Appel webhook N8N...');
+                    
                     fetch('https://n8n-h3c0.onrender.com/webhook/commande-redaction', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
                         },
                         body: JSON.stringify({
-                            body: {
-                                data: {
-                                    metadata: {
-                                        sujet: sujet
-                                    },
-                                    customer: {
-                                        email: email
-                                    },
-                                    reference: response.reference,
-                                    amount: 2500,
-                                    currency: 'XOF',
-                                    status: 'success',
-                                    mode: 'test'
-                                }
+                            data: {
+                                metadata: {
+                                    sujet: sujet
+                                },
+                                customer: {
+                                    email: email
+                                },
+                                reference: response.reference,
+                                amount: 2500,
+                                currency: 'XOF',
+                                status: 'success',
+                                mode: 'test'
                             }
                         })
                     })
                     .then(res => {
-                        console.log('✅ Webhook n8n appelé avec succès');
-                        // Afficher message succès
+                        console.log('✅ Webhook N8N appelé - Status:', res.status);
                         document.getElementById('orderFormDiv').style.display = 'none';
                         document.getElementById('successMessage').style.display = 'block';
                     })
                     .catch(error => {
                         console.error('❌ Erreur webhook:', error);
-                        // Afficher quand même le succès (paiement OK)
                         document.getElementById('orderFormDiv').style.display = 'none';
                         document.getElementById('successMessage').style.display = 'block';
+                        alert('Paiement OK mais erreur connexion N8N. Vérifiez que le workflow est actif.');
                     });
                 },
                 onClose: function() {
@@ -1399,29 +446,6 @@
             
             handler.openIframe();
         }
-
-        // Initialize
-        window.addEventListener('scroll', handleScroll);
-        window.addEventListener('load', () => {
-            handleScroll();
-            setTimeout(animateCounter, 500);
-        });
-
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-                // Close mobile menu
-                document.getElementById('mainNav').classList.remove('active');
-            });
-        });
     </script>
 </body>
-</html>
+    </html>

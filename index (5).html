@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rédaction Pro Express - Articles Professionnels sur Demande</title>
+    <script src="https://js.paystack.co/v1/inline.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #1e3a5f;
+            --secondary-blue: #2c5282;
+            --accent-green: #38a169;
+            --light-green: #48bb78;
+            --bg-light: #f7fafc;
+            --text-dark: #2d3748;
+            --text-light: #718096;
+            --white: #ffffff;
+            --shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            background: var(--white);
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+        }
+
+        .logo span {
+            color: var(--accent-green);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            opacity: 0.95;
+        }
+
+        .price-badge {
+            display: inline-block;
+            background: var(--accent-green);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(56, 161, 105, 0.4);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem 4rem;
+        }
+
+        /* Form Card */
+        .form-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: var(--shadow);
+            max-width: 500px;
+            margin: -2rem auto 4rem;
+            position: relative;
+        }
+
+        .form-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--accent-green));
+            border-radius: 20px 20px 0 0;
+        }
+
+        .form-card h2 {
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+            font-size: 1.8rem;
+        }
+
+        .form-card .subtitle {
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .form-group label .required {
+            color: #e53e3e;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-green);
+            box-shadow: 0 0 0 3px rgba(56, 161, 105, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #a0aec0;
+        }
+
+        .btn-primary {
+            width: 100%;
+            padding: 1.2rem 2rem;
+            background: linear-gradient(135deg, var(--accent-green), var(--light-green));
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(56, 161, 105, 0.4);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .secure-badge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* How it Works Section */
+        .how-it-works {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: var(--shadow);
+        }
+
+        .section-title {
+            text-align: center;
+            color: var(--primary-blue);
+            font-size: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .step {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 15px;
+            background: var(--bg-light);
+            transition: all 0.3s ease;
+        }
+
+        .step:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 1rem;
+        }
+
+        .step-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .step h3 {
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .step p {
+            color: var(--text-light);
+        }
+
+        /* Test Cards Section */
+        .test-cards {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            border: 2px dashed #d97706;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .test-cards h3 {
+            color: #92400e;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .test-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .test-card-item {
+            background: white;
+            padding: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .test-card-item strong {
+            color: var(--primary-blue);
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        .test-card-item code {
+            background: #e2e8f0;
+            padding: 0.2rem 0.5rem;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            color: #2d3748;
+        }
+
+        /* Features */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .feature {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            box-shadow: var(--shadow);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, rgba(56, 161, 105, 0.1), rgba(72, 187, 120, 0.1));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .feature h4 {
+            color: var(--primary-blue);
+            margin-bottom: 0.3rem;
+        }
+
+        .feature p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-blue);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .footer p {
+            opacity: 0.8;
+        }
+
+        /* Success Message */
+        .success-message {
+            display: none;
+            background: linear-gradient(135deg, #d4edda, #c3e6cb);
+            border: 2px solid var(--accent-green);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .success-message.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .success-message .icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .success-message h3 {
+            color: #276749;
+            margin-bottom: 0.5rem;
+        }
+
+        .success-message p {
+            color: #2f855a;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .form-card {
+                padding: 2rem;
+                margin: -2rem 1rem 3rem;
+            }
+
+            .how-it-works {
+                padding: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .test-cards {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Loading State */
+        .btn-primary.loading {
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
+        .btn-primary.loading::after {
+            content: '';
+            width: 20px;
+            height: 20px;
+            border: 3px solid white;
+            border-top-color: transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-left: 10px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Processing indicator */
+        .processing-indicator {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 1rem;
+            background: #ebf8ff;
+            border-radius: 10px;
+            margin-top: 1rem;
+            color: #2b6cb0;
+        }
+
+        .processing-indicator.show {
+            display: flex;
+        }
+
+        .processing-indicator .spinner {
+            width: 20px;
+            height: 20px;
+            border: 3px solid #bee3f8;
+            border-top-color: #3182ce;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <span class="logo-icon">✍️</span>
+                Rédaction<span>Pro</span>Express
+            </div>
+            <div class="secure-badge">
+                🔒 Paiement sécurisé Paystack
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>✨ Articles Professionnels sur Demande</h1>
+        <p>Recevez un article de qualité professionnelle rédigé par intelligence artificielle, directement dans votre boîte email en quelques minutes !</p>
+        <div class="price-badge">💰 2 500 FCFA seulement</div>
+    </section>
+
+    <!-- Main Container -->
+    <div class="container">
+
+        <!-- Order Form -->
+        <div class="form-card">
+            <h2>📝 Commander votre article</h2>
+            <p class="subtitle">Remplissez le formulaire ci-dessous pour recevoir votre article</p>
+            
+            <form id="orderForm">
+                <div class="form-group">
+                    <label for="email">📧 Votre adresse email <span class="required">*</span></label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        placeholder="exemple@email.com" 
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="sujet">📄 Sujet de l'article <span class="required">*</span></label>
+                    <textarea 
+                        id="sujet" 
+                        name="sujet" 
+                        placeholder="Décrivez le sujet de votre article... (ex: Les avantages du télétravail, Comment créer une startup, etc.)"
+                        required
+                    ></textarea>
+                </div>
+
+                <button type="submit" class="btn-primary" id="payButton">
+                    🛒 Commander mon article - 2 500 FCFA
+                </button>
+
+                <div class="secure-badge">
+                    🔐 Paiement 100% sécurisé via Paystack
+                </div>
+
+                <!-- Processing indicator -->
+                <div class="processing-indicator" id="processingIndicator">
+                    <div class="spinner"></div>
+                    <span>Génération de votre article en cours...</span>
+                </div>
+            </form>
+
+            <div class="success-message" id="successMessage">
+                <div class="icon">✅</div>
+                <h3>Paiement réussi !</h3>
+                <p id="successText">Votre article sera envoyé sous peu.</p>
+                <p style="margin-top: 1rem; font-size: 0.9rem; color: #48bb78;">
+                    📧 Vérifiez votre boîte email (et les spams) dans les prochaines minutes.
+                </p>
+            </div>
+        </div>
+
+        <!-- How it Works -->
+        <div class="how-it-works">
+            <h2 class="section-title">🚀 Comment ça marche ?</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-icon">📝</div>
+                    <h3>Décrivez votre sujet</h3>
+                    <p>Renseignez votre email et décrivez le sujet de l'article que vous souhaitez recevoir.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-icon">💳</div>
+                    <h3>Payez en toute sécurité</h3>
+                    <p>Effectuez le paiement de 2 500 FCFA via notre plateforme sécurisée Paystack.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-icon">📬</div>
+                    <h3>Recevez votre article</h3>
+                    <p>Votre article professionnel est généré par IA et envoyé directement à votre email.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features -->
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">⚡</div>
+                <div>
+                    <h4>Livraison rapide</h4>
+                    <p>Article envoyé en quelques minutes</p>
+                </div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🤖</div>
+                <div>
+                    <h4>IA avancée</h4>
+                    <p>Contenu de qualité professionnelle</p>
+                </div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">💯</div>
+                <div>
+                    <h4>100% original</h4>
+                    <p>Contenu unique et personnalisé</p>
+                </div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🔒</div>
+                <div>
+                    <h4>Paiement sécurisé</h4>
+                    <p>Transaction protégée par Paystack</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Test Cards Info -->
+        <div class="test-cards">
+            <h3>⚠️ MODE TEST - Cartes de test Paystack</h3>
+            <p style="margin-bottom: 1rem; color: #92400e;">Utilisez ces informations pour tester le paiement :</p>
+            <div class="test-cards-grid">
+                <div class="test-card-item">
+                    <strong>📇 Numéro de carte</strong>
+                    <code>4084 0840 8408 4081</code>
+                </div>
+                <div class="test-card-item">
+                    <strong>🔢 CVV</strong>
+                    <code>408</code>
+                </div>
+                <div class="test-card-item">
+                    <strong>📅 Date d'expiration</strong>
+                    <code>N'importe quelle date future</code>
+                </div>
+                <div class="test-card-item">
+                    <strong>🔐 PIN</strong>
+                    <code>0000</code>
+                </div>
+                <div class="test-card-item">
+                    <strong>📱 OTP</strong>
+                    <code>123456</code>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2025 Rédaction Pro Express - Tous droits réservés</p>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem;">Service propulsé par l'intelligence artificielle 🤖</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        document.getElementById('orderForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Récupérer les valeurs du formulaire
+            const email = document.getElementById('email').value.trim();
+            const sujet = document.getElementById('sujet').value.trim();
+
+            // Validation
+            if (!email || !sujet) {
+                alert('Veuillez remplir tous les champs obligatoires.');
+                return;
+            }
+
+            // Validation email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Veuillez entrer une adresse email valide.');
+                return;
+            }
+
+            // Désactiver le bouton pendant le traitement
+            const payButton = document.getElementById('payButton');
+            payButton.classList.add('loading');
+            payButton.textContent = 'Chargement...';
+
+            // Configuration Paystack
+            let handler = PaystackPop.setup({
+                key: 'pk_test_89bf10dcc887a9c92511ad2b8db444949fd7b553',
+                email: email,
+                amount: 250000, // 2500 FCFA en kobo
+                currency: 'XOF',
+                metadata: {
+                    sujet: sujet,
+                    custom_fields: [
+                        {
+                            display_name: "Sujet de l'article",
+                            variable_name: "sujet",
+                            value: sujet
+                        }
+                    ]
+                },
+                callback: function(response) {
+                    // ✅ Paiement réussi
+                    console.log('Paiement réussi:', response);
+                    
+                    // Message de succès
+                    alert('Paiement réussi ! Votre article sera envoyé sous peu à ' + email);
+                    
+                    // Afficher l'indicateur de traitement
+                    document.getElementById('processingIndicator').classList.add('show');
+                    
+                    // ✨ APPEL AU WEBHOOK N8N
+                    fetch('https://n8n-h3c0.onrender.com/webhook/commande-redaction', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            data: {
+                                customer: {
+                                    email: email
+                                },
+                                metadata: {
+                                    sujet: sujet
+                                },
+                                reference: response.reference
+                            }
+                        })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('✅ Workflow n8n déclenché avec succès:', data);
+                        // Cacher l'indicateur de traitement
+                        document.getElementById('processingIndicator').classList.remove('show');
+                    })
+                    .catch(error => {
+                        console.error('❌ Erreur lors de l\'appel à n8n:', error);
+                        // Cacher l'indicateur même en cas d'erreur
+                        document.getElementById('processingIndicator').classList.remove('show');
+                        // Note: Le paiement a réussi, l'erreur n'affecte que l'appel webhook
+                        // Le webhook Paystack servira de backup
+                    });
+                    
+                    // Afficher la section succès
+                    document.getElementById('successMessage').classList.add('show');
+                    document.getElementById('successText').textContent = 
+                        'Votre article sur "' + sujet.substring(0, 50) + (sujet.length > 50 ? '...' : '') + 
+                        '" sera envoyé à ' + email + ' dans les prochaines minutes.';
+                    
+                    // Réinitialiser le formulaire
+                    document.getElementById('orderForm').reset();
+                    
+                    // Réactiver le bouton
+                    payButton.classList.remove('loading');
+                    payButton.innerHTML = '🛒 Commander mon article - 2 500 FCFA';
+                    
+                    // Cacher le formulaire
+                    document.getElementById('orderForm').style.display = 'none';
+                },
+                onClose: function() {
+                    // L'utilisateur a fermé le popup sans payer
+                    console.log('Popup fermé par l\'utilisateur');
+                    
+                    // Réactiver le bouton
+                    payButton.classList.remove('loading');
+                    payButton.innerHTML = '🛒 Commander mon article - 2 500 FCFA';
+                }
+            });
+
+            // Ouvrir le popup Paystack
+            handler.openIframe();
+        });
+
+        // Animation au scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.step, .feature').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(el);
+        });
+    </script>
+
+</body>
+</html>
